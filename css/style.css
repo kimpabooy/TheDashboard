@@ -1,0 +1,84 @@
+:root{
+    --border-radius: 15px;
+}
+
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+#time-date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-style: solid;
+    height: 30px;
+    background-color: white;
+}
+
+#date-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 10px;
+}
+
+#random-background-btn {
+    width: 100px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+main h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.wrapper {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+.wrapper div {
+width: 250px;
+height: 300px;
+border-color: grey;
+border-radius: var(--border-radius);
+margin: 10px;
+padding: 10px;
+}
+
+.block {
+    background: rgb(223, 223, 223);
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 45vw;
+    padding-bottom: 10px;
+}
+
+#random-background-btn {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+path {
+    width: -50%;
+}
