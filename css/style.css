@@ -1,4 +1,4 @@
-:root{
+:root {
     --border-radius: 15px;
 }
 
@@ -8,13 +8,14 @@
     margin: 0;
     padding: 0;
 }
+
 body {
     height: 100vh;
     width: 100vw;
-    
+
 }
 
-#time-date{
+#time-date {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,19 +48,19 @@ main h1 {
 }
 
 .wrapper {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper div {
-width: 250px;
-height: 300px;
-border-color: grey;
-border-radius: var(--border-radius);
-margin: 10px;
-padding: 10px;
+    width: 250px;
+    height: 300px;
+    border-color: grey;
+    border-radius: var(--border-radius);
+    margin: 10px;
+    padding: 10px;
 }
 
 .block {
@@ -77,8 +78,4 @@ footer {
 #random-background-btn {
     width: 200px;
     margin-bottom: 10px;
-}
-
-path {
-    width: -50%;
 }
