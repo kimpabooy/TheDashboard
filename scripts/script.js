@@ -1,3 +1,7 @@
+
+/* Time and date*/
+////////////////////////////////////////////////////////////////
+
 function updateDateTime() {
   const clockElement = document.getElementById("time-date");
   const currentTime = new Date();
@@ -12,6 +16,7 @@ function updateDateTime() {
     "Fredag",
     "Lördag",
   ];
+
   const dayOfWeek = daysOfWeek[currentTime.getDay()];
 
   const months = [
@@ -29,19 +34,16 @@ function updateDateTime() {
     "December",
   ];
 
-  const month = months[currentTime.getMonth()];
-
-  const day = currentTime.getDate();
+  // Calculate hours (in 24-hour format), minutes, and seconds.
   const year = currentTime.getFullYear();
-
-  // Calculate and format hours (in 12-hour format), minutes, seconds, and AM/PM.
+  const month = months[currentTime.getMonth()];
+  const day = currentTime.getDate();
   let hours = currentTime.getHours();
-  //   const ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 24 || 24;
   const minutes = currentTime.getMinutes().toString().padStart(2, "0");
   const seconds = currentTime.getSeconds().toString().padStart(2, "0");
 
-  // Construct the date and time string in the desired format.
+  // Format after taste on site.
   const dateTimeString = `${dayOfWeek} ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
   clockElement.textContent = dateTimeString;
 }
@@ -51,3 +53,30 @@ setInterval(updateDateTime, 1000);
 
 // Initial update.
 updateDateTime();
+
+////////////////////////////////////////////////////////////////
+
+
+/* Notes - Style*/
+////////////////////////////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", () => {
+  const noteInput = document.getElementById("note-list");
+
+  // Load local storage
+  function loadNote() {
+    const savedNote = localStorage.getItem("note");
+    if (savedNote) {
+      noteInput.value = savedNote;
+    }
+  }
+
+  // save local storage
+  noteInput.addEventListener("input", () => {
+    localStorage.setItem("note", noteInput.value);
+  });
+
+  loadNote();
+});
+
+////////////////////////////////////////////////////////////////
