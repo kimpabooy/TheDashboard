@@ -15,7 +15,7 @@
   </header>
 
   <main>
-    <h1>Kim Andersson Dashboard</h1>
+    <h1 id="dashboard-title">Kim Andersson Dashboard</h1>
     <div class="wrapper">
       <div class="block">
         <h2>Snabblänkar</h2>
@@ -45,25 +45,27 @@
             <a href="www.google.com" target="_blank">Wikipedia</a>
           </li>
         </ul>
-        <button>+ Lägg till snabblänk</button>
+        <button> + Lägg till snabblänk</button>
       </div>
-      <div class="block"></div>
-      <div class="block"></div>
+
+      <div class="block"> Dagens väder</div>
+      <div class="block"> [...]</div>
+
       <div class="block">
         <h2>Anteckningar</h2>
         <textarea id="note-list" placeholder="Skriv en anteckning..."></textarea>
       </div>
     </div>
+
+
+    <button id="random-background-btn">
+      <i id="reload-icon" class="fa-solid fa-arrows-rotate"></i>Click me!
+    </button>
   </main>
 
   <footer>
     <p>&copy; Kim Andersson</p>
-    <button id="random-background-btn">
-      <i id="reload-icon" class="fa-solid fa-arrows-rotate"></i>Click me!
-    </button>
-    <div id="footer-block"></div>
   </footer>
-  <script src="Keys.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 

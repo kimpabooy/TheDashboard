@@ -1,3 +1,18 @@
+const UNSPLASH_API_KEY = "ODjYhDL-T71M5waxnfYN9x23d6_l53zA53Rtw51qwb4";
+const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}`;
+const weather_API_KEY = "";
+
+/*links*/
+////////////////////////////////////////////////////////////////
+
+// function addNewLink {
+
+// }
+
+////////////////////////////////////////////////////////////////
+
+
+
 
 /* Time and date*/
 ////////////////////////////////////////////////////////////////
@@ -80,3 +95,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 ////////////////////////////////////////////////////////////////
+
+
+const splashbackground = document.getElementById("random-background-btn");
+splashbackground.addEventListener("click", function () {
+  fetch(UNSPLASH_URL)
+    .then(response => response.json())
+    .then(data => {
+      const picture = `url(${data.urls.regular})`;
+      console.log(data);
+      console.log(data.urls.regular);
+      document.body.style.backgroundImage = picture;
+    })
+});
