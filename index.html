@@ -14,54 +14,29 @@
     <div id="time-date">Time</div>
   </header>
 
-  <main>
-    <h1 id="dashboard-title">Kim Andersson Dashboard</h1>
-    <div class="wrapper">
-      <div class="block">
-        <h2>Snabblänkar</h2>
-        <ul style="list-style: none">
-          <li>
-            <img
-              src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.google.com&size=32"
-              alt="Google icon" />
-            <a href="https://www.google.com/" target="_blank">Google</a>
-          </li>
-          <li>
-            <img
-              src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.Notion.com&size=32"
-              alt="Notion icon" />
-            <a href="https://www.notion.com/" target="_blank">Notion</a>
-          </li>
-          <li>
-            <img
-              src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.ChatGpt.com&size=32"
-              alt="ChatGpt icon" />
-            <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
-          </li>
-          <li>
-            <img
-              src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.Wikipedia.com&size=32"
-              alt="Wikipedia icon icon" />
-            <a href="www.google.com" target="_blank">Wikipedia</a>
-          </li>
-        </ul>
-        <button> + Lägg till snabblänk</button>
-      </div>
-
-      <div class="block"> Dagens väder</div>
-      <div class="block"> [...]</div>
-
-      <div class="block">
-        <h2>Anteckningar</h2>
-        <textarea id="note-list" placeholder="Skriv en anteckning..."></textarea>
-      </div>
+  <h1 id="dashboard-title">Dashboard</h1>
+  
+  <!-- Quick Liks -->
+  <div class="wrapper">
+    <div class="block">
+      <h2>Snabblänkar <button id="add-link-btn">+ Lägg till </button></h2>
+      <ul style="list-style: none"></ul>
+      <!-- <button id="add-link-btn">+ Lägg till Snabblänk</button> -->
     </div>
 
+    <div class="block"> Dagens väder</div>
+    <div class="block"> [...]</div>
 
-    <button id="random-background-btn">
-      <i id="reload-icon" class="fa-solid fa-arrows-rotate"></i>Click me!
-    </button>
-  </main>
+    <div class="block">
+      <h2>Anteckningar</h2>
+      <textarea id="note-list" placeholder="Skriv en anteckning..."></textarea>
+    </div>
+  </div>
+
+
+  <button id="random-background-btn">
+    <i id="reload-icon" class="fa-solid fa-arrows-rotate"></i>Click me!
+  </button>
 
   <footer>
     <p>&copy; Kim Andersson</p>
