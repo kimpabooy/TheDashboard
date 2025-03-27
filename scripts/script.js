@@ -1,7 +1,7 @@
 const UNSPLASH_API_KEY = "ODjYhDL-T71M5waxnfYN9x23d6_l53zA53Rtw51qwb4";
 const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}`;
-const WEATHER_API_KEY = "";
-const WEATHER_URL = "";
+const WEATHER_API_KEY = "e9886aa06cca1bbf3ecc1b8bf7f60198";
+const CHUCK_URL = "https://api.chucknorris.io/jokes/random"
 
 
 // Quick note
@@ -201,10 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadLinks();
 });
 
-
 ////////////////////////////////////////////////////////////////
-
-
 
 
 /* Time and date*/
@@ -264,35 +261,220 @@ updateDateTime();
 
 ////////////////////////////////////////////////////////////////
 
+// Weather
+////////////////////////////////////////////////////////////////
+
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    const { latitude, longitude } = position.coords;
+    getWeather(latitude, longitude);
+  },
+  (error) => {
+    console.error("Kunde inte hämta din position:", error);
+    document.querySelector(".location").textContent = "Kunde inte hämta plats";
+  }
+);
+
+function getWeather(latitude, longitude) {
+  const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric&lang=sv`;
+
+  fetch(WEATHER_URL)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`API-fel: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      displayWeather(data);
+      console.log(data);
+    })
+    .catch(error => {
+      console.error("Kunde inte hämta väderdata:", error);
+      document.querySelector(".location").textContent = "Kunde inte hämta väderdata";
+    });
+}
+// weather-data
+function displayWeather(data) {
+  const weatherData = document.getElementById("weather-data");
+  weatherData.innerHTML = "";
+
+  weatherData.innerHTML = `
+
+      <h2>${data.name}</h2>
+      <div id="current-temp-degrees">
+        <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
+        ${Math.floor(data.main.temp)}°C 
+      </div>
+      
+    <p id="current-temp-feel">${data.weather[0].description} Känns som ${Math.floor(data.main.feels_like)} C°</p>
+    <ul id="current-temp-misc">
+      <li>Vind: ${data.wind.speed} m/s</li>
+      <li>Luftfuktighet: ${data.main.humidity}%</li>
+      <li>Molnighet ${data.clouds.all}%</li>
+    </ul>
+  `;
+  // weatherCard.appendChild(weathedata);
+}
+
+
+
+
+// function displayWeather(data) {
+//   document.getElementById("city-name").textContent = `Weather in ${data.name}`;
+//   document.getElementById("temp").textContent = `Temperature: ${data.main.temp} C°`;
+
+//   document.getElementById("description").textContent = `Description: ${data.weather[0].description}`;
+//   document.getElementById("wind").textContent = `Wind: ${data.wind.speed} m / s`;
+//   document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}`;
+//   document.getElementById("clouds").textContent = `Clouds: ${data.clouds.all}%`;
+// }
+
+// const h2 = document.createElement("h2");
+// h2.textContent = "Location";  
+// const img = document.createElement("img")
+
+
+// navigator.geolocation.getCurrentPosition(
+//   (position) => {
+//     const { latitude, longitude } = position.coords;
+//     getWeather(latitude, longitude);
+//   },
+//   (error) => {
+//     console.error("Could not get your location", error);
+//     document.querySelector(".location").textContent = "Could not get location";
+//   }
+// );
+
+// function getWeather(latitude, longitude) {
+//   const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric&lang=sv`;
+
+//   fetch(WEATHER_URL)
+//     .then(response => {
+//       if (!response.ok) throw new Error("Något gick fel med API-anropet");
+//       return response.json();
+//     })
+//     .then(data => {
+//       displayWeather(data);
+//     })
+//     .catch((error) => {
+//       displayError(error.message);
+//     });
+// }
+
+// function displayWeather(data) {
+//   const container = document.querySelector(".weather-container");
+//   container.innerHTML = `<h2>Dagens väder</h2>`; // Rensa innan och lägg rubrik
+
+//   const weatherCard = document.createElement("div");
+//   weatherCard.className = "weather-card";
+
+//   // Välj ikon utifrån vädret
+//   let icon = "☁️";
+//   const mainWeather = data.weather[0].main.toLowerCase();
+//   if (mainWeather.includes("snow")) icon = "❄️";
+//   else if (mainWeather.includes("rain")) icon = "🌧️";
+//   else if (mainWeather.includes("clear")) icon = "☀️";
+//   else if (mainWeather.includes("cloud")) icon = "⛅";
+
+//   weatherCard.innerHTML = `
+//     <div class="icon">${icon}</div>
+//     <div class="info">
+//       <div class="day">Idag</div>
+//       <div class="temp">${Math.round(data.main.temp)}°C</div>
+//       <div class="desc">${data.weather[0].description}</div>
+//     </div>
+//   `;
+
+//   container.appendChild(weatherCard);
+// }
+
+// function displayError(message) {
+//   const container = document.querySelector(".weather-container");
+//   container.innerHTML = `<p id="error-message">${message}</p>`;
+// }
+
+
+////////////////////////////////////////////////////////////////
+
+
+// Chuck Norris box
+////////////////////////////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", function () {
+  const chuckContainer = document.querySelector("#chuck-container");
+  const chuckButton = document.querySelector("#chuck-btn");
+  const chuckP = document.createElement("p");
+  chuckContainer.appendChild(chuckP);
+  chuckP.textContent = "";
+  const getSavedQuote = localStorage.getItem("chuckText");
+
+  // Visa sparat citat om det finns
+  if (getSavedQuote) {
+    chuckP.textContent = getSavedQuote;
+  }
+
+  // Funktion för att uppdatera citatet
+  chuckButton.addEventListener("click", function () {
+    fetch(CHUCK_URL)
+      .then(response => response.json())
+      .then(data => {
+        chuckP.textContent = data.value; // Uppdatera p-elementet med det nya citatet
+        localStorage.setItem("chuckText", data.value); // Spara texten i localStorage
+      })
+      .catch(error => {
+        chuckP.textContent = "Något gick fel. Försök igen senare."; // Felmeddelande
+        console.error(error);
+      });
+  });
+});
+
+
+
+////////////////////////////////////////////////////////////////
+
 
 // Background Image
 ////////////////////////////////////////////////////////////////
 
-// // Generate a random background picture.
 const splashbackground = document.getElementById("random-background-btn");
 
 //Gets the saved background img from local storage.
 document.addEventListener("DOMContentLoaded", () => {
-    const savedBackground = localStorage.getItem("backgroundImage");
-    if (savedBackground) {
-        setBackground(savedBackground);
-      }
-    });
+  const savedBackground = localStorage.getItem("backgroundImage");
+  if (savedBackground) {
+    setBackground(savedBackground);
+  }
+});
 
-    splashbackground.addEventListener("click", function () {
-        fetch(UNSPLASH_URL)
-          .then(response => response.json())
-          .then(data => {
-              const pictureUrl = data.urls.regular;
-              setBackground(pictureUrl);
-        
-              // Save background image to localStorage
-              localStorage.setItem("backgroundImage", pictureUrl);
-            })
-            .catch(error => console.error("Error fetching image:", error));
-        });
-        
-        // sets the generated picture as background.
-        function setBackground(pictureUrl) {
-            document.body.style.backgroundImage = `url(${pictureUrl})`;
-          }
+splashbackground.addEventListener("click", function () {
+  fetch(UNSPLASH_URL)
+    .then(response => response.json())
+    .then(data => {
+      const pictureUrl = data.urls.regular;
+      setBackground(pictureUrl);
+
+      // Save background image to localStorage
+      localStorage.setItem("backgroundImage", pictureUrl);
+    })
+    .catch(error => console.error("Error fetching image:", error));
+});
+
+// sets the generated picture as background.
+function setBackground(pictureUrl) {
+  document.body.style.backgroundImage = `url(${pictureUrl})`;
+}
+
+////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+// TODO
+
+// * Spara chuck Norris i local storage.
+// * implementera väderappen.
+// * Göra applikationen mobilanpassad.

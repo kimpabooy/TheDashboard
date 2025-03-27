@@ -9,30 +9,38 @@
   <title>Home</title>
 </head>
 
-<body>
-  <header id="date-container">
-    <div id="time-date">Time</div>
-  </header>
+<!-- <img id="the-dashboard" src="./images/The Dashboard.svg" alt="Dashboard image"> -->
 
+<body>
+  <div id="time-date">Time</div>
   <h1 id="dashboard-title">Dashboard</h1>
-  
-  <!-- Quick Liks -->
+
   <div class="wrapper">
+
+    <!-- Quick Liks -->
     <div class="block">
       <h2>Snabblänkar <button id="add-link-btn">+ Lägg till </button></h2>
       <ul style="list-style: none"></ul>
-      <!-- <button id="add-link-btn">+ Lägg till Snabblänk</button> -->
     </div>
 
-    <div class="block"> Dagens väder</div>
-    <div class="block"> [...]</div>
+    <!-- Weather -->
+    <div class="block">
+      <h2>Väder</h2>
+      <div id="weather-data"></div>
+    </div>
 
+    <!-- Chuck -->
+    <div class="block">
+      <h2>Chuck or what</h2>
+      <div id="chuck-container"><button id="chuck-btn">+ New Chuck facts</button></div>
+    </div>
+
+    <!-- Quick Notes -->
     <div class="block">
       <h2>Anteckningar</h2>
       <textarea id="note-list" placeholder="Skriv en anteckning..."></textarea>
     </div>
   </div>
-
 
   <button id="random-background-btn">
     <i id="reload-icon" class="fa-solid fa-arrows-rotate"></i>Click me!
