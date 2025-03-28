@@ -11,24 +11,11 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-html,
-body {
-    overflow: hidden;
-}
-
-/* Date & Time header */
-#date-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 10px;
 }
 
 #time-date {
@@ -37,22 +24,44 @@ body {
     align-items: center;
     max-width: 300px;
     padding: 10px;
-    margin-top: 10px;
     border: none;
     border-radius: var(--border-radius);
     height: 30px;
     background-color: white;
     box-shadow: var(--box-shadow);
     margin-inline: auto;
+    margin-top: 20px;
 }
 
+/* #date-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 10px;
+    margin: 100px;
+} */
 
-/* Dashboard titel */
+/* #time-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    height: 30px;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    margin-inline: auto;
+    margin-top: 10px;
+} */
+
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 150px;
+    text-align: center;
 }
 
 #newTitleId {
@@ -61,48 +70,48 @@ h1 {
     justify-content: center;
     min-width: 100px;
     max-width: auto;
-    font-Size: 2rem;
-    font-Weight: bold;
+    font-size: 2rem;
+    font-weight: bold;
     margin-top: 146px;
     margin-inline: auto;
     text-align: center;
     background-color: transparent;
 }
 
-/* block wrapper */
 .wrapper {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    scrollbar-width: none;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
 }
 
 .wrapper div {
     text-align: center;
     width: 300px;
+    max-width: 90vw;
     height: 300px;
     background-color: #e6e0e0;
     border-radius: var(--border-radius);
     margin: 10px;
     padding: 10px;
     overflow: auto;
-    overflow-x: hidden;
 }
 
-/* Quick linkzzz */
 .wrapper div ul li {
     display: flex;
     justify-content: start;
     align-items: center;
     background-color: #f1f1f1;
     margin-top: 10px;
-
     border-radius: var(--border-radius);
     gap: 10px;
 }
 
-#add-link-btn {
+#add-link-btn,
+#chuck-btn,
+#random-background-btn {
     align-self: center;
     background-color: #ffffff;
     border: none;
@@ -110,10 +119,13 @@ h1 {
     cursor: pointer;
     box-shadow: var(--box-shadow);
     padding: 5px 10px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
 }
 
-#add-link-btn:hover {
+#add-link-btn:hover,
+#chuck-btn:hover,
+#random-background-btn:hover {
     transform: scale(1.2);
     background-color: #e6e0e0;
 }
@@ -123,36 +135,17 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px; */
+    /* padding: 0px; */
+    width: 250px;
+    max-width: 90%;
+    height: auto;
+    margin-top: 20px;
+    background-color: white;
 }
 
 #chuck-container p {
     width: 75%;
-}
-
-#chuck-btn {
-    align-self: center;
-    background-color: #ffffff;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-    padding: 5px 10px;
-    transition: background-color 0.3s ease;
-}
-
-#chuck-btn:hover {
-    transform: scale(1.2);
-    background-color: #e6e0e0;
-}
-
-/* Citatområde */
-#chuck-container {
-    width: 250px;
-    height: auto;
-    margin-top: 20px;
-    background-color: white;
 }
 
 p {
@@ -165,8 +158,9 @@ p {
 
 footer {
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     left: 10px;
+    text-align: center;
 }
 
 /* bakgrund button */
@@ -174,26 +168,16 @@ footer {
     position: fixed;
     bottom: 20px;
     left: 50%;
-    align-self: center;
-    background-color: #ffffff;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-    padding: 5px 10px;
-    transition: background-color 0.3s ease;
+    transform: translateX(-50%);
 }
 
-#random-background-btn:hover {
-    transform: scale(1.2);
-}
-
+/* Anteckningar */
 .block {
     background: rgb(223, 223, 223);
     padding: 20px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     max-width: 275px;
-    overflow-wrap: scroll;
+    width: 90%;
     overflow-wrap: break-word;
 }
 
@@ -209,16 +193,18 @@ footer {
     outline: none;
 }
 
-/* Weather */
+textarea#note-list {
+    border-radius: var(--border-radius);
+}
 
+/* Weather */
 #weather-data {
     width: 100%;
-    height: 90%;
+    height: auto;
     margin: -10px;
     display: flex;
     flex-direction: column;
     align-items: start;
-    overflow: hidden;
 }
 
 #current-temp-degrees {
@@ -250,7 +236,6 @@ footer {
 }
 
 /* MODAL */
-
 .modal {
     display: none;
     position: fixed;
@@ -278,4 +263,43 @@ footer {
 .modal-content button {
     padding: 8px;
     cursor: pointer;
+}
+
+/* 🟢 MOBILANPASSNING */
+@media (width < 768px) {
+    h1 {
+        margin-top: 50px;
+        font-size: 1.5rem;
+    }
+
+    #time-date {
+        width: 90%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .wrapper div {
+        width: 90%;
+        max-width: 350px;
+        height: auto;
+    }
+
+    #random-background-btn {
+        position: static;
+        bottom: 10px;
+        right: 50px;
+    }
+
+    footer {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
 }

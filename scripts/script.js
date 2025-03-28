@@ -314,7 +314,6 @@ function displayWeather(data) {
       <li>Molnighet ${data.clouds.all}%</li>
     </ul>
   `;
-  // weatherCard.appendChild(weathedata);
 }
 
 
