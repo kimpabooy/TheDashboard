@@ -4,7 +4,7 @@ const WEATHER_API_KEY = "e9886aa06cca1bbf3ecc1b8bf7f60198";
 const CHUCK_URL = "https://api.chucknorris.io/jokes/random"
 
 
-// Quick note
+// <<< Quick note START >>>
 ////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,10 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
   loadLocalStorage();
 });
 
+// <<< Quick note END >>>
 ////////////////////////////////////////////////////////////////
 
 
-// dashboard-title
+// <<< Dashboard-title START >>>
 ////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -49,15 +50,13 @@ document.addEventListener("DOMContentLoaded", function () {
     input.type = "text";
     input.value = title.textContent;
 
-    // Ersätt rubriken med input-fältet
     title.replaceWith(input);
     input.focus(); // input.focus put's the marker directly in the input field.
 
-    // Hantera när användaren lämnar input-fältet
     function saveTitle() {
       const newTitle = input.value.trim() || "Anonymous Dashboard"; // Default value if empty.
       title.textContent = newTitle;
-      localStorage.setItem("dashboardTitle", newTitle); // Spara till localStorage
+      localStorage.setItem("dashboardTitle", newTitle);
       input.replaceWith(title);
     }
 
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Saves changes if "Enter" is pressed.
     input.addEventListener("keypress", function (event) {
       if (event.key === "Enter") {
-        input.blur(); // Triggar blur-händelsen och sparar värdet
+        input.blur(); // Triggar blur-and saves the value
         // saveTitle();
 
       }
@@ -74,9 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// <<< Dashboard-title END >>>
 ////////////////////////////////////////////////////////////////
 
-/*links*/
+// <<< links START >>>
 ////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const addButton = document.querySelector(".block button");
   const modal = document.createElement("div");
 
-  // Modalen för länkarna
+  // Modal for links
   modal.innerHTML = `
   <div id="link-modal" class="modal">
   <div class="modal-content">
@@ -197,14 +197,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // https://getbootstrap.com/docs/4.0/components/modal/
 
-  // Ladda länkar vid start
   loadLinks();
 });
 
+// <<< links END  >>>
 ////////////////////////////////////////////////////////////////
 
 
-/* Time and date*/
+// <<< Time and Date START  >>>
 ////////////////////////////////////////////////////////////////
 
 function updateDateTime() {
@@ -259,9 +259,10 @@ setInterval(updateDateTime, 1000);
 // Initial update.
 updateDateTime();
 
+// <<< Time and Date END >>>
 ////////////////////////////////////////////////////////////////
 
-// Weather
+// <<< Weather START >>>
 ////////////////////////////////////////////////////////////////
 
 navigator.geolocation.getCurrentPosition(
@@ -317,8 +318,6 @@ function displayWeather(data) {
 }
 
 
-
-
 // function displayWeather(data) {
 //   document.getElementById("city-name").textContent = `Weather in ${data.name}`;
 //   document.getElementById("temp").textContent = `Temperature: ${data.main.temp} C°`;
@@ -361,43 +360,11 @@ function displayWeather(data) {
 //     });
 // }
 
-// function displayWeather(data) {
-//   const container = document.querySelector(".weather-container");
-//   container.innerHTML = `<h2>Dagens väder</h2>`; // Rensa innan och lägg rubrik
-
-//   const weatherCard = document.createElement("div");
-//   weatherCard.className = "weather-card";
-
-//   // Välj ikon utifrån vädret
-//   let icon = "☁️";
-//   const mainWeather = data.weather[0].main.toLowerCase();
-//   if (mainWeather.includes("snow")) icon = "❄️";
-//   else if (mainWeather.includes("rain")) icon = "🌧️";
-//   else if (mainWeather.includes("clear")) icon = "☀️";
-//   else if (mainWeather.includes("cloud")) icon = "⛅";
-
-//   weatherCard.innerHTML = `
-//     <div class="icon">${icon}</div>
-//     <div class="info">
-//       <div class="day">Idag</div>
-//       <div class="temp">${Math.round(data.main.temp)}°C</div>
-//       <div class="desc">${data.weather[0].description}</div>
-//     </div>
-//   `;
-
-//   container.appendChild(weatherCard);
-// }
-
-// function displayError(message) {
-//   const container = document.querySelector(".weather-container");
-//   container.innerHTML = `<p id="error-message">${message}</p>`;
-// }
-
-
+// <<< Weather END >>>
 ////////////////////////////////////////////////////////////////
 
 
-// Chuck Norris box
+// <<< Chuck Norris Box START >>>
 ////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -428,12 +395,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
+// <<< Chuck Norris Box END >>>
 ////////////////////////////////////////////////////////////////
 
 
-// Background Image
+// <<< Background Image START >>>
 ////////////////////////////////////////////////////////////////
 
 const splashbackground = document.getElementById("random-background-btn");
@@ -464,6 +430,7 @@ function setBackground(pictureUrl) {
   document.body.style.backgroundImage = `url(${pictureUrl})`;
 }
 
+// <<< Background Image END >>>
 ////////////////////////////////////////////////////////////////
 
 

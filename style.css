@@ -124,8 +124,7 @@ h1 {
 }
 
 #add-link-btn:hover,
-#chuck-btn:hover,
-#random-background-btn:hover {
+#chuck-btn:hover {
     transform: scale(1.2);
     background-color: #e6e0e0;
 }
@@ -135,8 +134,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin: 0px; */
-    /* padding: 0px; */
     width: 250px;
     max-width: 90%;
     height: auto;
@@ -166,9 +163,19 @@ footer {
 /* bakgrund button */
 #random-background-btn {
     position: fixed;
+    width: 100px;
+    padding: 10px;
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 48%;
+}
+
+#random-background-btn:hover {
+    background-color: #e6e0e0;
+    transform: scale(1.2);
+}
+
+#reload-icon {
+    margin-right: 5px;
 }
 
 /* Anteckningar */
@@ -265,7 +272,6 @@ textarea#note-list {
     cursor: pointer;
 }
 
-/* 🟢 MOBILANPASSNING */
 @media (width < 768px) {
     h1 {
         margin-top: 50px;
@@ -291,15 +297,21 @@ textarea#note-list {
         height: auto;
     }
 
+    #chuck-container {
+        margin-inline: auto;
+        width: 90%;
+        max-width: 350px;
+    }
+
     #random-background-btn {
-        position: static;
-        bottom: 10px;
-        right: 50px;
+        position: relative;
+        bottom: -50px;
     }
 
     footer {
-        position: static;
+        position: relative;
         text-align: center;
         margin-top: 20px;
+        margin-inline: auto;
     }
 }
