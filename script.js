@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const li = document.createElement("li");
     li.innerHTML = `
           <img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&url=${url}&size=32" alt="${title} icon">
-          <a href="${url}" style="text-decoration: none "target="_blank">${title}</a>
+          <a href="${url}" style="text-decoration: none; padding: 10px; "target="_blank">${title}</a>
           <button class="delete-link">🗑</button>
       `;
 

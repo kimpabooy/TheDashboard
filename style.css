@@ -122,6 +122,7 @@ h1 {
     padding: 5px 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-decoration: none;
+    border-radius: var(--border-radius);
 }
 
 #add-link-btn:hover,
@@ -179,16 +180,17 @@ footer {
     margin-right: 5px;
 }
 
-/* Anteckningar */
-.block {
+div.block {
     background: rgb(223, 223, 223);
     padding: 20px;
     box-shadow: var(--box-shadow);
-    max-width: 275px;
+    max-width: 280px;
     width: 90%;
     overflow-wrap: break-word;
+    overflow: hidden;
 }
 
+/* Anteckningar */
 #note-list {
     margin-top: 5px;
     width: 100%;
@@ -211,10 +213,13 @@ textarea#note-list {
 
 #weather-data {
     background: #f5f5f5;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     max-width: 250px;
     height: 220px;
+    gap: 10px;
     padding: 0;
+    margin-inline: auto;
+    overflow: hidden;
 }
 
 #weather-data h4 {
@@ -246,9 +251,10 @@ textarea#note-list {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 240px;
+    width: 230px;
     height: 80px;
     overflow: hidden;
+    /* max-height: fit-content; */
 }
 
 #current-weather-info p {
@@ -256,6 +262,9 @@ textarea#note-list {
     font-size: 0.9em;
     color: black;
 }
+
+#current-temp-text {}
+
 
 
 /* 2nd try */
@@ -416,11 +425,16 @@ textarea#note-list {
     #weather-data {
         margin-inline: auto;
         max-width: 275px;
+        margin-inline: auto;
     }
 
     #weather-data h2 {
         margin-inline: auto;
         margin-bottom: 10px;
+    }
+
+    #current-weather-info {
+        margin-inline: auto;
     }
 
     #random-background-btn {
