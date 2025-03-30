@@ -85,12 +85,13 @@ h1 {
     align-items: flex-start;
     gap: 10px;
     padding: 20px;
+
 }
 
 .wrapper div {
     text-align: center;
     width: 300px;
-    max-width: 90vw;
+    /* max-width: 90vw; */
     height: 300px;
     background-color: #e6e0e0;
     border-radius: var(--border-radius);
@@ -205,31 +206,124 @@ textarea#note-list {
 }
 
 /* Weather */
+/* ///////////////////////////////////////////////////////////////////////////////////////////*/
+
 
 #weather-data {
+    background: #f5f5f5;
+    border-radius: 8px;
+    max-width: 250px;
+    height: 220px;
+    padding: 0;
+}
+
+#weather-data h4 {
+    display: block;
+    top: 0px;
+}
+
+#current-block {
+    height: 0;
+    flex: 1;
+}
+
+#current-temp-icon {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+#current-weather-temp-today {
+    font-weight: bold;
+    ;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+#current-weather-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 240px;
+    height: 80px;
+    overflow: hidden;
+}
+
+#current-weather-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: black;
+}
+
+
+/* 2nd try */
+
+/* #weather-data {
+    width: 230px;
+    height: 150px;
+    background-color: white;
+    padding: 5px;
+}
+
+#weather-data h4 {
+    display: flex;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+#current-temp-degrees {
+    background-color: white;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+
+}
+
+#current-temp-icon {
+    width: 50px;
+    height: 50px;
+    background-color: whitesmoke;
+}
+
+#current-weather-info {
+    display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px; 
+    
+} */
+
+
+/* 1st try */
+
+/* #weather-data {
     width: 100%;
     max-width: 100%;
     height: auto;
     margin: -10px;
     margin-left: 2px;
     text-align: start;
-}
+} */
 
 /* Gradens storlek */
-#current-temp-text {
+/* #current-temp-text {
     font-size: 2rem;
-}
+} */
 
-#current-temp-feel {
+/* #current-temp-feel {
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(0.7);
-}
+} */
+/* transform: scale(0.7); */
 
 
-#current-temp-degrees {
+/* #current-temp-degrees {
     display: flex;
     justify-content: center;
     align-items: start;
@@ -238,24 +332,26 @@ textarea#note-list {
     overflow: hidden;
     margin: 0px;
     padding: 0px;
-}
+} */
 
-#current-temp-feel {
+/* #current-temp-feel {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-#current-temp-misc {
+/* #current-temp-misc {
     display: flex;
     justify-content: start;
     align-items: start;
-}
+} */
 
-#current-temp-misc li {
+/* #current-temp-misc li {
     padding: 2px;
     border-radius: 0;
-}
+} */
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* MODAL */
 .modal {

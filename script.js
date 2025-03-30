@@ -301,21 +301,37 @@ function displayWeather(data) {
   weatherData.innerHTML = "";
 
   weatherData.innerHTML = `
+    <h3>${data.name}</h3>
+    <div id="current-weather-info">
+      <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
+      <p id="current-weather-temp-today">Idag ${Math.floor(data.main.temp)}°C</p>
+      <div id="current-block"></div> 
+      <p style="text-transform: capitalize;">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
+    </div>
+  `;
+}
 
-      <h2>${data.name}</h2>
+
+/*
+
+  weatherData.innerHTML = `
+
+      <h4>${data.name}</h4>
       <div id="current-temp-degrees">
         <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
         <p id="current-temp-text">${Math.floor(data.main.temp)}°C</p> 
       </div>
+      <p id="current-temp-feel">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
+      <ul id="current-temp-misc">
+        <li>Vind: ${data.wind.speed} m/s</li>
+        <li>Luftfuktighet: ${data.main.humidity}%</li>
+        <li>Molnighet ${data.clouds.all}%</li>
+      </ul>
       
-    <p id="current-temp-feel">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
-    <ul id="current-temp-misc">
-      <li>Vind: ${data.wind.speed} m/s</li>
-      <li>Luftfuktighet: ${data.main.humidity}%</li>
-      <li>Molnighet ${data.clouds.all}%</li>
-    </ul>
   `;
 }
+
+*/
 
 
 // function displayWeather(data) {
