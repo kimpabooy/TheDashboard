@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const li = document.createElement("li");
     li.innerHTML = `
           <img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&url=${url}&size=32" alt="${title} icon">
-          <a href="${url}" target="_blank">${title}</a>
+          <a href="${url}" style="text-decoration: none "target="_blank">${title}</a>
           <button class="delete-link">🗑</button>
       `;
 
@@ -305,10 +305,10 @@ function displayWeather(data) {
       <h2>${data.name}</h2>
       <div id="current-temp-degrees">
         <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
-        ${Math.floor(data.main.temp)}°C 
+        <p id="current-temp-text">${Math.floor(data.main.temp)}°C</p> 
       </div>
       
-    <p id="current-temp-feel">${data.weather[0].description} Känns som ${Math.floor(data.main.feels_like)} C°</p>
+    <p id="current-temp-feel">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
     <ul id="current-temp-misc">
       <li>Vind: ${data.wind.speed} m/s</li>
       <li>Luftfuktighet: ${data.main.humidity}%</li>

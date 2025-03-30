@@ -205,14 +205,29 @@ textarea#note-list {
 }
 
 /* Weather */
+
 #weather-data {
     width: 100%;
+    max-width: 100%;
     height: auto;
     margin: -10px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+    margin-left: 2px;
+    text-align: start;
 }
+
+/* Gradens storlek */
+#current-temp-text {
+    font-size: 2rem;
+}
+
+#current-temp-feel {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.7);
+}
+
 
 #current-temp-degrees {
     display: flex;
@@ -294,13 +309,22 @@ textarea#note-list {
     .wrapper div {
         width: 90%;
         max-width: 350px;
-        height: auto;
     }
 
     #chuck-container {
         margin-inline: auto;
         width: 90%;
         max-width: 350px;
+    }
+
+    #weather-data {
+        margin-inline: auto;
+        max-width: 275px;
+    }
+
+    #weather-data h2 {
+        margin-inline: auto;
+        margin-bottom: 10px;
     }
 
     #random-background-btn {
