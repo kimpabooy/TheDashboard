@@ -1,12 +1,14 @@
+// API Keys
 const UNSPLASH_API_KEY = "ODjYhDL-T71M5waxnfYN9x23d6_l53zA53Rtw51qwb4";
-const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}`;
 const WEATHER_API_KEY = "e9886aa06cca1bbf3ecc1b8bf7f60198";
+
+// URL's
+const UNSPLASH_URL = `https://api.unsplash.com/photos/random?client_id=${UNSPLASH_API_KEY}`;
 const CHUCK_URL = "https://api.chucknorris.io/jokes/random"
 
 
 // <<< Quick note START >>>
 ////////////////////////////////////////////////////////////////
-
 document.addEventListener("DOMContentLoaded", () => {
   const noteInput = document.getElementById("note-list");
 
@@ -25,14 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadLocalStorage();
 });
-
 // <<< Quick note END >>>
 ////////////////////////////////////////////////////////////////
 
 
-// <<< Dashboard-title START >>>
+// <<< Dashboard-Title START >>>
 ////////////////////////////////////////////////////////////////
-
 document.addEventListener("DOMContentLoaded", function () {
   const title = document.getElementById("dashboard-title");
 
@@ -72,13 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 // <<< Dashboard-title END >>>
 ////////////////////////////////////////////////////////////////
 
 // <<< links START >>>
 ////////////////////////////////////////////////////////////////
-
 document.addEventListener("DOMContentLoaded", function () {
   const linksContainer = document.querySelector(".block ul");
   const addButton = document.querySelector(".block button");
@@ -105,8 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>`;
   document.body.appendChild(modal);
 
-
-  // Set-up id's for modal popup.
+  // variuble for modal popup.
   const linkModal = document.getElementById("link-modal");
   const closeModalBtn = document.getElementById("close-modal");
   const saveLinkBtn = document.getElementById("save-link");
@@ -155,20 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
     linkModal.style.display = "none";
   });
 
-  // function closeModal() {
-  //   titleInput.value = "";
-  //   urlInput.value = "";
-  //   linkModal.style.display = "none";
-  // }
-
-  // // Stäng modalen om man klickar utanför modalens innehåll
-  // linkModal.addEventListener("click", function (event) {
-  //   const modalContent = document.getElementById("link-modal >");
-  //   if (!modalContent.contains(event.target)) {
-  //     closeModal();
-  //   }
-  // });
-
   function handleEnterPress(event) {
     if (event.key === "Enter") {
       saveLinkBtn.click();
@@ -184,7 +167,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const url = urlInput.value.trim();
     if (!title || !url) return alert("Fyll i båda fälten!");
 
-
     const savedLinks = JSON.parse(localStorage.getItem("quickLinks")) || [];
     savedLinks.push({ title, url });
     localStorage.setItem("quickLinks", JSON.stringify(savedLinks));
@@ -199,19 +181,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadLinks();
 });
-
 // <<< links END  >>>
 ////////////////////////////////////////////////////////////////
 
 
 // <<< Time and Date START  >>>
 ////////////////////////////////////////////////////////////////
-
 function updateDateTime() {
   const clockElement = document.getElementById("time-date");
   const currentTime = new Date();
 
-  // Define arrays for days of the week and months to format the day and month names.
+  // Define arrays for days of the weeks.
   const daysOfWeek = [
     "Söndag",
     "Måndag",
@@ -222,8 +202,9 @@ function updateDateTime() {
     "Lördag",
   ];
 
-  const dayOfWeek = daysOfWeek[currentTime.getDay()];
+  const dayOfWeek = daysOfWeek[currentTime.getDay()]; // activate in dateTimeString to get displayed on site.
 
+  // Define arrays for mounths
   const months = [
     "January",
     "February",
@@ -248,23 +229,21 @@ function updateDateTime() {
   const minutes = currentTime.getMinutes().toString().padStart(2, "0");
   const seconds = currentTime.getSeconds().toString().padStart(2, "0");
 
-  // Format after taste on site.
-  const dateTimeString = `${dayOfWeek} ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
+  // write the time to the clockElement.
+  const dateTimeString = `${hours}:${minutes}:${seconds} | ${day} ${month} ${year} `;
   clockElement.textContent = dateTimeString;
 }
 
-// Update the date and time every second (1000 milliseconds).
+// Updates date and time every second (1000 milliseconds).
 setInterval(updateDateTime, 1000);
 
-// Initial update.
 updateDateTime();
-
 // <<< Time and Date END >>>
 ////////////////////////////////////////////////////////////////
 
+
 // <<< Weather START >>>
 ////////////////////////////////////////////////////////////////
-
 navigator.geolocation.getCurrentPosition(
   (position) => {
     const { latitude, longitude } = position.coords;
@@ -305,84 +284,16 @@ function displayWeather(data) {
     <div id="current-weather-info">
       <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
       <p id="current-weather-temp-today">Idag ${Math.floor(data.main.temp)}°C</p>
-      <div id="current-block"></div> 
       <p style="text-transform: capitalize;">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
     </div>
   `;
 }
-
-
-/*
-
-  weatherData.innerHTML = `
-
-      <h4>${data.name}</h4>
-      <div id="current-temp-degrees">
-        <img id="current-temp-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather icon">
-        <p id="current-temp-text">${Math.floor(data.main.temp)}°C</p> 
-      </div>
-      <p id="current-temp-feel">${data.weather[0].description}, Känns som ${Math.floor(data.main.feels_like)} C°</p>
-      <ul id="current-temp-misc">
-        <li>Vind: ${data.wind.speed} m/s</li>
-        <li>Luftfuktighet: ${data.main.humidity}%</li>
-        <li>Molnighet ${data.clouds.all}%</li>
-      </ul>
-      
-  `;
-}
-
-*/
-
-
-// function displayWeather(data) {
-//   document.getElementById("city-name").textContent = `Weather in ${data.name}`;
-//   document.getElementById("temp").textContent = `Temperature: ${data.main.temp} C°`;
-
-//   document.getElementById("description").textContent = `Description: ${data.weather[0].description}`;
-//   document.getElementById("wind").textContent = `Wind: ${data.wind.speed} m / s`;
-//   document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}`;
-//   document.getElementById("clouds").textContent = `Clouds: ${data.clouds.all}%`;
-// }
-
-// const h2 = document.createElement("h2");
-// h2.textContent = "Location";  
-// const img = document.createElement("img")
-
-
-// navigator.geolocation.getCurrentPosition(
-//   (position) => {
-//     const { latitude, longitude } = position.coords;
-//     getWeather(latitude, longitude);
-//   },
-//   (error) => {
-//     console.error("Could not get your location", error);
-//     document.querySelector(".location").textContent = "Could not get location";
-//   }
-// );
-
-// function getWeather(latitude, longitude) {
-//   const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric&lang=sv`;
-
-//   fetch(WEATHER_URL)
-//     .then(response => {
-//       if (!response.ok) throw new Error("Något gick fel med API-anropet");
-//       return response.json();
-//     })
-//     .then(data => {
-//       displayWeather(data);
-//     })
-//     .catch((error) => {
-//       displayError(error.message);
-//     });
-// }
-
 // <<< Weather END >>>
 ////////////////////////////////////////////////////////////////
 
 
 // <<< Chuck Norris Box START >>>
 ////////////////////////////////////////////////////////////////
-
 document.addEventListener("DOMContentLoaded", function () {
   const chuckContainer = document.querySelector("#chuck-container");
   const chuckButton = document.querySelector("#chuck-btn");
@@ -391,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
   chuckP.textContent = "";
   const getSavedQuote = localStorage.getItem("chuckText");
 
-  // Visa sparat citat om det finns
+  // Get textcontent from localstorage if there is any.
   if (getSavedQuote) {
     chuckP.textContent = getSavedQuote;
   }
@@ -401,23 +312,21 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(CHUCK_URL)
       .then(response => response.json())
       .then(data => {
-        chuckP.textContent = data.value; // Uppdatera p-elementet med det nya citatet
-        localStorage.setItem("chuckText", data.value); // Spara texten i localStorage
+        chuckP.textContent = data.value; // updates the textvalue to the new value.
+        localStorage.setItem("chuckText", data.value); // Saves to local storage
       })
       .catch(error => {
-        chuckP.textContent = "Något gick fel. Försök igen senare."; // Felmeddelande
+        chuckP.textContent = "Något gick fel. Försök igen senare.";
         console.error(error);
       });
   });
 });
-
 // <<< Chuck Norris Box END >>>
 ////////////////////////////////////////////////////////////////
 
 
 // <<< Background Image START >>>
 ////////////////////////////////////////////////////////////////
-
 const splashbackground = document.getElementById("random-background-btn");
 
 //Gets the saved background img from local storage.
@@ -445,11 +354,8 @@ splashbackground.addEventListener("click", function () {
 function setBackground(pictureUrl) {
   document.body.style.backgroundImage = `url(${pictureUrl})`;
 }
-
 // <<< Background Image END >>>
 ////////////////////////////////////////////////////////////////
-
-
 
 
 
